@@ -4,9 +4,9 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import axios from "axios";
 import Pagination from "../../components/Pagination/Pagination";
 function HomePge() {
-
-  const [movies, setMovies] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
+  const [movies, setMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [watchList, setWatchList] = useState([]);
 
   useEffect(() => {
     function apiCall() {
@@ -22,13 +22,24 @@ function HomePge() {
     apiCall();
   }, [currentPage]);
 
+  const removeFromWatchList = (movieId) => {
+    setWatchList((prevList) => prevList.filter((prevId) => prevId !== movieId));
+  };
 
-  const nextPage=()=>{
-    setCurrentPage(currentPage+1);
-  }
+  const addToWatchList = (movieId) => {
+    const newWatchList = [...watchList, movieId];
+    setWatchList(newWatchList);
+  };
+
+
+  
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
   const previousPage = () => {
-    if(currentPage>1){
+    if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
@@ -41,11 +52,21 @@ function HomePge() {
         </h1>
         <div className="p-4 flex flex-wrap gap-4 justify-center">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              addToWatchList={addToWatchList}
+              removeFromWatchList={removeFromWatchList}
+              watchList={watchList}
+            />
           ))}
         </div>
       </section>
-      <Pagination nextPage={nextPage} previousPage={previousPage} currentPage={currentPage}/>
+      <Pagination
+        nextPage={nextPage}
+        previousPage={previousPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
