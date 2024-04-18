@@ -2,14 +2,17 @@ import React, { useEffect,useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import axios from "axios";
+import Pagination from "../../components/Pagination/Pagination";
 function HomePge() {
 
   const [movies, setMovies] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+
   useEffect(() => {
     function apiCall() {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`
+          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`
         )
         .then((res) => {
           setMovies(res.data.results);
@@ -17,8 +20,18 @@ function HomePge() {
     }
 
     apiCall();
-  }, []);
+  }, [currentPage]);
 
+
+  const nextPage=()=>{
+    setCurrentPage(currentPage+1);
+  }
+
+  const previousPage = () => {
+    if(currentPage>1){
+      setCurrentPage(currentPage - 1);
+    }
+  };
   return (
     <div>
       <Banner />
@@ -32,6 +45,7 @@ function HomePge() {
           ))}
         </div>
       </section>
+      <Pagination nextPage={nextPage} previousPage={previousPage} currentPage={currentPage}/>
     </div>
   );
 }
