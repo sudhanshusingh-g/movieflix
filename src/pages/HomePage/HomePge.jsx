@@ -22,8 +22,17 @@ function HomePge() {
     apiCall();
   }, [currentPage]);
 
+  useEffect(() => {
+    const storedList = localStorage.getItem("favouriteList");
+    if (storedList) {
+      setWatchList(JSON.parse(storedList));
+    }
+  }, []);
+
   const removeFromWatchList = (movieId) => {
-    setWatchList((prevList) => prevList.filter((prevId) => prevId !== movieId));
+    const updatedList = watchList.filter((item) => item.id !== movieId);
+    setWatchList(updatedList);
+    localStorage.setItem("favouriteList", JSON.stringify(updatedList));
   };
 
   const addToWatchList = (movie) => {

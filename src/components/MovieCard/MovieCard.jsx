@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { MdBookmarkRemove, MdBookmarkAdded } from "react-icons/md";
-
 function MovieCard({ movie,addToWatchList,removeFromWatchList,watchList }) {
   
   const [hovered, setHovered] = useState("");
@@ -12,6 +11,8 @@ function MovieCard({ movie,addToWatchList,removeFromWatchList,watchList }) {
   const hideButton = () => {
     setHovered(false);
   };
+
+  
 
   return (
     <div
@@ -27,7 +28,7 @@ function MovieCard({ movie,addToWatchList,removeFromWatchList,watchList }) {
         style={{ display: hovered ? "block" : "none" }}
       >
         {watchList.find((item)=>item.id === movie.id) ? (
-          <div onClick={() => removeFromWatchList(movie)}>
+          <div onClick={() => removeFromWatchList(movie.id)}>
             <MdBookmarkRemove color="#F0F0F0" />
           </div>
         ) : (
