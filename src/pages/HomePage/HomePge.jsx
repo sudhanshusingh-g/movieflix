@@ -26,9 +26,10 @@ function HomePge() {
     setWatchList((prevList) => prevList.filter((prevId) => prevId !== movieId));
   };
 
-  const addToWatchList = (movieId) => {
-    const newWatchList = [...watchList, movieId];
+  const addToWatchList = (movie) => {
+    const newWatchList = [...watchList, movie];
     setWatchList(newWatchList);
+    localStorage.setItem("favouriteList",JSON.stringify(newWatchList));
   };
 
 
@@ -43,6 +44,8 @@ function HomePge() {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  console.log(movies);
   return (
     <div>
       <Banner />
