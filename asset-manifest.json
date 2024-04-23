@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sudhanshusingh-g/movieflix/static/css/main.8dc5e8fb.css",
+    "main.js": "/sudhanshusingh-g/movieflix/static/js/main.d666363a.js",
+    "index.html": "/sudhanshusingh-g/movieflix/index.html",
+    "main.8dc5e8fb.css.map": "/sudhanshusingh-g/movieflix/static/css/main.8dc5e8fb.css.map",
+    "main.d666363a.js.map": "/sudhanshusingh-g/movieflix/static/js/main.d666363a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8dc5e8fb.css",
+    "static/js/main.d666363a.js"
+  ]
+}
