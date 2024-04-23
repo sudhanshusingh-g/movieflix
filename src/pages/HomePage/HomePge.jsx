@@ -57,7 +57,7 @@ function HomePge() {
   console.log(movies);
   return (
     <div>
-      <Banner />
+      <Banner movies={movies} />
       <section className="my-8">
         <h1 className="px-4 flex gap-1 font-bold text-2xl items-center">
           <span className="bg-slate-500 w-[0.2rem] h-[32px]"></span>Top Picks
