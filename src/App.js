@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<HomePge />} />
+          <Route path="/movieflix" element={<HomePge />} />
           <Route path="/watchlist" element={<WatchList />} />
         </Routes>
       </BrowserRouter>

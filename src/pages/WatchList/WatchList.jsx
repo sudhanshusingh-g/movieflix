@@ -37,7 +37,7 @@ function WatchList() {
   }, [currentGenre]);
 
   const navigateToMovies=()=>{
-    navigate("/");
+    navigate("/movieflix");
   }
   return (
     <div className="my-2 p-4">
